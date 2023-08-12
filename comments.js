@@ -1,4 +1,4 @@
-//create web server
+// Create web server
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
     res.write("Hello World");
