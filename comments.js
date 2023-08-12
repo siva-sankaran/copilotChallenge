@@ -1,19 +1,3 @@
-// create function to add two integers
-function add(x, y) {
-  return x + y;
-}
-
-//create function to check whether the give number is prime or not
-function isPrime(n) {    
-  if (n <= 1) {
-    return false;
-  }
-  for (let i = 2; i < n; i++) {
-    if (n % i == 0) return false;
-  }
-  return true;
-}
-
 //create web server
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
@@ -33,7 +17,15 @@ const server = http.createServer((req, res) => {
     const url_parts = url.parse(req.url, true);
     const query = url_parts.query;
     const n = parseInt(query.number);
-    const prime = isPrime(n);
+    let prime = true;
+    if (n <= 1) {
+        prime = false;
+      }
+      for (let i = 2; i < n; i++) {
+        if (n % i == 0) prime = false;
+      }
+      prime = true;
+
     res.write(`${n} is prime number: ${prime}`);
     res.end();
   }
